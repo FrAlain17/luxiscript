@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="h-screen flex overflow-hidden bg-gray-100">
+    <!-- Sidebar -->
+    <div class="hidden md:flex md:flex-shrink-0">
+        <div class="flex flex-col w-64">
+            <div class="flex flex-col h-0 flex-1 bg-gray-900">
+                <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="flex items-center flex-shrink-0 px-4">
+                        <span class="text-xl font-bold text-white">Luxi Admin</span>
+                    </div>
+                    <nav class="mt-5 flex-1 px-2 space-y-1">
+                        <a href="{% url 'admin_dashboard' %}"
+                            class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-white bg-gray-800">
+                            Dashboard
+                        </a>
+                        <a href="{% url 'admin_users' %}"
+                            class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                            Users
+                        </a>
+                        <a href="{% url 'admin_plans' %}"
+                            class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                            Plans
+                        </a>
+                        <a href="{% url 'admin_payments' %}"
+                            class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                            Payments
+                        </a>
+                        <a href="{% url 'dashboard_overview' %}"
+                            class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white mt-10">
+                            &larr; Back to App
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col w-0 overflow-hidden">
+        <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                    <h1 class="text-2xl font-semibold text-gray-900">{% block header %}Admin Dashboard{% endblock %}
+                    </h1>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                    {% block admin_content %}{% endblock %}
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
